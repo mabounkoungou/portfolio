@@ -6,7 +6,7 @@ import emailjs from "@emailjs/browser";
 const ContactPage = () => {
   const [success, setSuccess] = useState(false);
   const [error, setError] = useState(false);
-  const text = "Say Hello";
+  const text = "Send your enquiries";
 
   const form = useRef();
 
@@ -65,31 +65,37 @@ const ContactPage = () => {
         <form
           onSubmit={sendEmail}
           ref={form}
-          className="h-1/2 lg:h-full lg:w-1/2 bg-red-50 rounded-xl text-xl flex flex-col gap-8 justify-center p-24"
+          className="h-full lg:h-full lg:w-1/2 bg-red-50 rounded-xl text-xl flex flex-col gap-8 justify-center p-24"
         >
-          <span>Hi Raad,</span>
-          <textarea
+          <span>Name</span>
+          <input
             rows={6}
             className="bg-transparent border-b-2 border-b-black outline-none resize-none"
-            name="user_message"
+            name="user_name" required
           />
-          <span>My mail address is:</span>
+          <span>Email Address</span>
           <input
             name="user_email"
-            type="text"
             className="bg-transparent border-b-2 border-b-black outline-none"
+            rows={6} required
+          />
+          <span>Message</span>
+          <input
+            rows={6}
+            className="bg-transparent border-b-2 border-b-black outline-none resize-none"
+            name="message" required
           />
           <span>Regards</span>
-          <button className="bg-purple-200 rounded font-semibold text-gray-600 p-4">
+          <button className="bg-purple-300 rounded font-semibold text-gray-600 p-4">
             Send
           </button>
           {success && (
-            <span className="text-green-600 font-semibold">
+            <span className="text-green-300 font-semibold">
               Your message has been sent successfully!
             </span>
           )}
           {error && (
-            <span className="text-red-600 font-semibold">
+            <span className="text-red-300 font-semibold">
               Something went wrong!
             </span>
           )}
